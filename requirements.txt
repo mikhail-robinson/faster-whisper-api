@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+faster-whisper
+python-multipart
+# Add pydub if needed later for audio conversion, not strictly for this phase with UploadFile
