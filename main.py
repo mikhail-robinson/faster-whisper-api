@@ -48,7 +48,7 @@ app.add_middleware(
 async def health():
     return {"status": "ok", "model_loaded": True}
 
-@app.post("/transcribe")
+@app.post("/stt/transcribe")
 async def transcribe(
     audio: UploadFile,
 ) -> dict[Literal["response", "status", "language_detected"], str]:
@@ -66,7 +66,7 @@ async def transcribe(
         raise HTTPException(status_code=500, detail=f"Transcription error: {str(e)}")
 
 
-@app.websocket("/ws/stt")
+@app.websocket("stt/ws/stt")
 async def websocket_stt_endpoint(websocket: WebSocket):
     await websocket.accept()
     print("WebSocket client connected")
